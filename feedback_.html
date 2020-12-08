@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Feedback?
+{% endblock %}
+
+{% block main %}
+<h2>
+    <span class="text-danger">
+        Should be improved?
+    </span> Please give some productive feedback! 🤗 </br>
+    The creator of card "{{card["solution"]}}" will certainly appreciate it!</br></br>
+</h2>
+
+<form action="/feedback_" method="post">
+    <button class="btn btn-primary" name="button" value="feedback" type="submit">Give feedback</button>
+</br></br>
+<div id="outer">
+    <button class="inner btn btn-secondary" name="button" value="play" type="submit">Play next card</button>
+    &emsp;&emsp;&emsp;&emsp;
+    <button class="inner btn btn-secondary" name="button" value="review" type="submit">Review more cards</button>
+</div>
+
+<input type="hidden" name="card" value="{{card["id"]}}">
+<input type="hidden" name="language" value="{{card["language"]}}">
+</form>
+
+
+
+
+{% endblock %}

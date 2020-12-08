@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create
+{% endblock %}
+
+{% block main %}
+<h2 class="text-primary">
+    Create</br>
+</h2>
+<p>
+    Let's create! 🚀 You might want to go to
+    <a href="https://en.wikipedia.org/w/index.php?search=&title=Special%3ASearch&go=Go&ns0=1"target="_blank" >Wikipedia_ENG</a> or
+    <a href="https://de.wikipedia.org/w/index.php?search=&title=Spezial%3ASuche&go=Artikel"target="_blank" >Wikipedia_DE</a>
+    to find more information about your topic!<br/>
+    Before creating your first card, please read the <a href="create_guideline"target="_blank" >Guideline</a> for good cards.<br/></br></br>
+</p>
+
+<form action="/create" method="post">
+
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="solution" placeholder="Solution" type="text">
+            <br/><br/>
+            <div>
+                {% for i in range(1, 13) %}
+                <input autocomplete="off" autofocus class="form-control" name="field" placeholder="{{i}}" type="text" size=50>
+                <br/><br/>
+                {% endfor %}
+            </div>
+        </div>
+    <div id="outer">
+        <select class="inner browser-default custom-select" name="language"style="width: 200px;">
+          <option selected>Choose language</option>
+          <option value="English">English</option>
+          <option value="Deutsch">Deutsch</option>
+        </select>
+        &emsp;&emsp;
+        <select class="inner browser-default custom-select" name="category"style="width: 200px;">
+          <option selected>Choose category</option>
+          <option value="Who">Who</option>
+          <option value="Where">Where</option>
+          <option value="What">What</option>
+          <option value="When">When</option>
+        </select>
+    </div>
+    <br/><br/>
+
+    <div id="outer">
+        <button class="btn btn-primary" type="submit" name="button" value="create">Create Card</button> &emsp; or &emsp;
+        <button class="btn" type="submit" name="button" value="draft">Save Draft</button>
+    </div>
+
+    </form>
+{% endblock %}
+
+

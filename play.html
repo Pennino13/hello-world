@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Play
+{% endblock %}
+
+{% block main %}
+<h2 class="text-danger">
+    Play</br></br>
+</h2>
+
+<h3>
+    {{card["category"]}}?</br></br>
+</h3>
+
+{% for i, x in zipped_hints %}
+<p>
+    {{i}}. {{x}} <br/>
+</p>
+{% endfor %}
+
+<p>
+    <b>{{card["solution"]}}</b>
+    <br/><br/>
+</p>
+
+<div id="outer">
+    <form action="/play" method="post" class="inner">
+        <button class="btn btn-success inner" name="vote" type="submit" value="OK">👍 Next card!</button>
+        &emsp;&emsp;
+        <button class="btn btn-danger inner" name="vote" type="submit" value="NOT OK">👎 Should be improved!</button>
+        <input type="hidden" name="card" value="{{card["id"]}}">
+        <input type="hidden" name="language" value="{{card["language"]}}">
+    </form>
+
+    {% if is_admin == True %}
+    &emsp;&emsp;
+    <form action="/my" method="post" class="inner">
+        <button class="btn btn-primary" name="card" type="submit" value="{{card["id"]}}">Admin: Edit</button>
+    </form>
+    {% endif %}
+</div>
+
+{% endblock %}

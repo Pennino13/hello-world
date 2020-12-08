@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My Drafts
+{% endblock %}
+
+{% block main %}
+<h2>
+    My Drafts</br>
+</h2>
+<p>
+    These are your drafts. Click on them to edit or upgrade them to a new card.</br>
+    </br>
+</p>
+
+    {% for i in cards %}
+        <form action="/mydrafts" method="post">
+        <button class="btn" name="card" type="submit" value="{{i["id"]}}">{{i["solution"]}}</button>
+        </form>
+        <br/>
+    {% endfor %}
+
+{% endblock %}

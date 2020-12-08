@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Feedback
+{% endblock %}
+
+{% block main %}
+<h2>
+    Let's give some productive feedback!</br>
+</h2>
+<p>Where is the problem? What is the problem?</p>
+<form method="post" action="/give_feedback">
+
+<div class="form-group">
+    <textarea class="form-control" name="message" placeholder="This message will be send anonymously to the creator to help him improve this card!" rows="5"></textarea>
+  </div>
+
+<input type="hidden" name="card" value="{{card["id"]}}">
+<button class="btn btn-primary" name="button" type="submit">Submit feedback</button>
+</form>
+
+<p>
+    <b>{{card["solution"]}}</b>
+    <br/>
+</p>
+
+{% for i, x in zipped_hints %}
+<p>
+    {{i}}. {{x}} <br/>
+</p>
+{% endfor %}
+
+
+
+{% endblock %}

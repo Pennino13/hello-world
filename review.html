@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Review
+{% endblock %}
+
+{% block main %}
+<h2 class="text-warning">
+    Review</br>
+</h1>
+<p>
+    These are cards from other users, that have to be reviewed before they can get into the play-stack.</br>
+    Notice: Please rate each card only once. Card with Score >= 5 are added to Play!</br>
+    </br>
+</p>
+    {% for i in cards %}
+        <form action="/review" method="post">
+        <button class="btn btn-warning" name="card" type="submit" value="{{i["id"]}}">{{i["solution"]}}; Score = {{i["is_ok"]}}; {{i["language"]}}</button>
+        </form>
+        <br/>
+    {% endfor %}
+    <script>
+        function change() {
+            document.getElementById("myform").submit();
+        }
+    </script>
+    <form id="myform" action="/review" method="post">
+        <select class="browser-default custom-select" name="language" onchange="change()" style="width: 200px;">
+          <option selected>Choose language</option>
+          <option value="English">English</option>
+          <option value="Deutsch">Deutsch</option>
+        </select>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Review Card
+{% endblock %}
+
+{% block main %}
+<h2>
+    Review this card with the solution "{{card["solution"]}}" by up/downvoting it. We appreciate your participation.</br>
+</h2>
+<p>
+    Notice: Cards that get 5 more up- than downvotes are added to the Play-Stack!
+</p>
+{% for i, x in zipped_hints %}
+<p>
+    {{i}}. {{x}} <br/>
+</p>
+{% endfor %}
+<p>
+    <b>Solution: {{card["solution"]}}</b>
+</p>
+<div id="outer">
+    <form action="/review_card" method="post" class="inner">
+        <button class="btn btn-success inner" name="vote" type="submit" value="OK">👍 This card is great!</button>
+        <input type="hidden" name="card" value="{{card["id"]}}">
+        &emsp;&emsp;
+        <button class="btn btn-danger inner" name="vote" type="submit" value="NOT OK">👎 Should be improved!</button>
+        <input type="hidden" name="card" value="{{card["id"]}}">
+        </form>
+
+        {% if is_admin == True %}
+        &emsp;&emsp;
+        <form action="/my" method="post" class="inner">
+        <button class="btn btn-primary" name="card" type="submit" value="{{card["id"]}}">Admin: Edit</button>
+        </form>
+        {% endif %}
+</div>
+
+
+
+{% endblock %}

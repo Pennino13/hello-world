@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My Cards
+{% endblock %}
+
+{% block main %}
+<h2 class="text-success">
+    My Cards</br>
+</h2>
+<p>
+    These are the cards you created. Click on them to edit.</br>
+    Notice: Score is the result of up-/downvotes by other users. Cards with Score > 5 are in the Play-Stack and therefore cannot be edited.
+    </br></br>
+</p>
+    {% for a, b in cards_zip %}
+        <form action="/my" method="post">
+        <button class="btn btn-success" name="card" type="submit" value="{{b["id"]}}">{{b["solution"]}}; Score = {{b["is_ok"]}}</button>
+        </form>
+        {% if bool_list[a] %}
+        <div class="text-danger">🚨 You've got some advice concerning this card! 🚨
+        </div>
+        {% endif %}
+        <br/>
+    {% endfor %}
+{% endblock %}

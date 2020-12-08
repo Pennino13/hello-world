@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Settings
+{% endblock %}
+
+{% block main %}
+<h2 class="text-secondary">
+    Settings</br>
+</h2>
+<p>
+    Hello, <b>{{username}}</b>! Here you can change your username or password.
+    </br></br></br>
+</p>
+    <form action="/settings" method="post">
+        <input autocomplete="off" autofocus class="form-control" name="new_username" placeholder="{{username}}" type="text">
+        &emsp;&emsp;&emsp;<button class="btn btn-primary" name="change_username" type="submit">Change Username</button>
+        <input type="hidden" name="form_username" value="0">
+    </form>
+</br></br></br>
+    <form action="/settings" method="post">
+        <input autocomplete="off" autofocus class="form-control" name="old_password" placeholder="Old Password" type="password"></br></br>
+        <input autocomplete="off" autofocus class="form-control" name="password" placeholder="New Password" type="password"></br></br>
+        <input autocomplete="off" autofocus class="form-control" name="confirmation" placeholder="Repeat New Password" type="password"></br></br>
+        <button class="btn btn-primary" name="change_password" type="submit">Change Password</button>
+
+    </form>
+{% endblock %}

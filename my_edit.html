@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit Card
+{% endblock %}
+
+{% block main %}
+<h2>
+    Edit 📝</br>
+</h2>
+<p>
+    Notice: Only cards with a score below 5 are editable.
+</p>
+
+<div>
+    {% for x in messages %}
+        Please consider the following advice given by another user to improve your card:</br>
+        <span class="text-danger">
+        {{x["message"]}}
+        </span>
+        <form action="/my_edit" method="post">
+            <button class="btn btn-danger" name="button" value="advice" type="submit">Delete advice</button>
+            <input type="hidden" name="feedback_id" value="{{x["id"]}}">
+        </form>
+
+        </br></br>
+    {% endfor %}
+</div>
+<form action="/my_edit" method="post">
+
+<input autocomplete="off" autofocus class="form-control" placeholder="Solution" name="solution" value="{{card["solution"]}}" type="text">
+<br/><br/>
+
+{% for i, x in zipped_hints %}
+    <div>{{i}}. <input autocomplete="off" autofocus class="form-control" placeholder={{i}} name="field" value="{{x}}" type="text" size=50>
+    </div>
+    <br/>
+{% endfor %}
+
+    <div id="outer">
+        <select class="inner browser-default custom-select" name="language"style="width: 200px;">
+          <option value="{{card["language"]}}" selected>{{card["language"]}}</option>
+          <option value="English">English</option>
+          <option value="Deutsch">Deutsch</option>
+        </select>
+        &emsp;&emsp;
+        <select class="inner browser-default custom-select" name="category"style="width: 200px;">
+          <option value="{{card["category"]}}"selected>{{card["category"]}}</option>
+          <option value="Who">Who</option>
+          <option value="Where">Where</option>
+          <option value="What">What</option>
+          <option value="When">When</option>
+        </select>
+    </div>
+    <br/><br/>
+
+    <button class="btn btn-primary" name="button" value="change" type="submit">Save Changes</button>
+    {% if table == 'drafts' %}
+    <button class="btn btn-success" name="button" value="create" type="submit">Create Card</button>
+    <button class="btn btn-danger" name="button" value="delete" type="submit" onclick="return confirm('Are you sure?')">Delete Draft</button>
+    {% endif %}
+    {% if table == 'cards' %}
+    <button class="btn btn-secondary" name="button" value="into_draft" type="submit" onclick="return confirm('Are you sure? Score will be set to 0, if you reupload the card from your drafts later.')">Turn into Draft</button>
+    {% endif %}
+    <input type="hidden" name="card" value="{{card["id"]}}">
+    <input type="hidden" name="table" value="{{table}}">
+</form>
+{% endblock %}

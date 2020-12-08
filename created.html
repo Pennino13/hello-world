@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Thank You!
+{% endblock %}
+
+{% block main %}
+
+    {% if session.user_id %}
+        <div>
+            Thank you for your contribution! WE ❤️ YOU!
+
+            Have a nice day!
+        </div>
+    {% else %}
+        <div>
+            Glad to have you here :D  WE ❤️ YOU!
+
+            Please consider to <a href="/register">Register</a>.
+            <br/><br/>
+            This would allow you to create your own cards and to review other people's cards before they are added to the play-stack.
+        </div>
+    {% endif %}
+
+{% endblock %}

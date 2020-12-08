@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Ranking
+{% endblock %}
+
+{% block main %}
+<h2 class="text-info">
+    Ranking</br>
+</h1>
+<p>
+    These are the <b>TOP 12</b> users with the highest overall score aka the Top <b>Creators</b> of Cards.</br>
+    </br>
+</p>
+
+<div>
+{% for a, b, c in zipped_tops %}
+    {{a}}. <b>{{b}}</b>, Score: {{c}}<br/><br/>
+{% endfor %}
+</div>
+
+{% endblock %}

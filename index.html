@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome!
+{% endblock %}
+
+{% block main %}
+    <p> Hello to the users from Reddit or BoardGameGeek! I would really appreciate, if you give me some feedback. Also it'd
+    be fantastic, if you can take the time to write one card of your own with 12 hints and a solution, if you like this game.
+    Pls consider to share this with your friends or family. My goal is to make this a real playable game until christmas. 🎅🏽
+    For this we need more active users, that contribute to create cards. As by now there is only 1 english card, so it will be shown again and
+    again under Play_ENG</p>
+    <h2>
+        Welcome, <mark class="green">{{username}}</mark>! Good to see you! 😊 Your overall score is <b>{{score}}</b>. 📊
+        <br/><br/>
+        At the current state of this website <a href="/create">Create</a><br/> is the place to be! 🚀<br/><br/>
+    </h2>
+    <p>Especially English cards are needed!!!</p>
+
+    {% if is_admin == True %}
+        <p>
+            {{username}}, you are part of the trusted <b>admin</b> team! This allows you to edit cards, that other users
+            have created. You will see an additional <span class="text-primary">"Admin: Edit"</span> Button at the bottom of cards, that you
+            <span class="text-warning">review</span>.
+        </p>
+    {% endif %}
+    <h3>
+        Below you can view an explanation of this game in English or German:
+    </h3>
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/gPk_bHs0-AQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    &emsp;&emsp;
+    <iframe width="400" height="200" src="https://www.youtube.com/embed/cfDq1m0uE-w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+{% endblock %}
